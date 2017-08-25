@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="kr.co.tjeit.dabangcopy.RoomFilterActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#A0A0A0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="방 필터"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/okBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:text="확인" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="계약 방식 선택"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/monthPayToggleBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textOff="월세 안봄"
+            android:textOn="월세 선택" />
+
+        <ToggleButton
+            android:id="@+id/charterToggleBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textOff="전세 안봄"
+            android:textOn="전세 선택" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="보증금 선택"/>
+
+        <TextView
+            android:id="@+id/currentDepositTxt"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 ~ 5억"/>
+    </LinearLayout>
+
+
+    <io.apptik.widget.MultiSlider
+        android:id="@+id/depositSlide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:thumbNumber="2"
+        app:stepsThumbsApart="5"
+        app:drawThumbsApart="true"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="방 종류 선택"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/oneRoomToggleBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textOn="원룸 O"
+            android:textOff="원룸 X"/>
+
+        <ToggleButton
+            android:id="@+id/twoRoomToggleBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:textOn="투룸 O"
+            android:textOff="투룸 X"/>
+
+        <ToggleButton
+            android:id="@+id/threeRoomToggleBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:textOn="쓰리룸 O"
+            android:textOff="쓰리룸 X"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
