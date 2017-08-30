@@ -14,6 +14,7 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import kr.co.tjeit.dabangcopy.MyProfileSettingActivity;
 import kr.co.tjeit.dabangcopy.R;
+import kr.co.tjeit.dabangcopy.util.ContextUtil;
 
 /**
  * Created by the on 2017-08-25.
@@ -24,11 +25,17 @@ public class MyProfileFragment extends Fragment {
     private CircleImageView profileImage;
     private TextView telephoneLayout;
     private android.widget.LinearLayout myInfoLayout;
+    private TextView userIdTxt;
+    private TextView userPhoneTxt;
+    private TextView userNameTxt;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_my_profile, container, false);
+        this.userNameTxt = (TextView) v.findViewById(R.id.userNameTxt);
+        this.userPhoneTxt = (TextView) v.findViewById(R.id.userPhoneTxt);
+        this.userIdTxt = (TextView) v.findViewById(R.id.userIdTxt);
         this.myInfoLayout = (LinearLayout) v.findViewById(R.id.myInfoLayout);
         this.telephoneLayout = (TextView) v.findViewById(R.id.telephoneLayout);
         this.profileImage = (CircleImageView) v.findViewById(R.id.profileImage);
@@ -62,7 +69,9 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void setValues() {
-
+        userIdTxt.setText(ContextUtil.getEditId(getActivity()));
+        userIdTxt.setText(ContextUtil.getEditId(getActivity()));
+        userPhoneTxt.setText(ContextUtil.getUserPhoneNum(getActivity()));
     }
 
     private void bindViews() {

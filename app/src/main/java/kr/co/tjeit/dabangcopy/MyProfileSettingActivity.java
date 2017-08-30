@@ -1,6 +1,7 @@
 package kr.co.tjeit.dabangcopy;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,10 +10,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import kr.co.tjeit.dabangcopy.util.ContextUtil;
 
 public class MyProfileSettingActivity extends BaseActivity {
 
@@ -21,6 +25,11 @@ public class MyProfileSettingActivity extends BaseActivity {
     private Button profileImageBtn;
     private Button logoutBtn;
     private CircleImageView profileImage;
+    private android.widget.TextView userIdTxt;
+    private android.widget.EditText transIdEdt;
+    private Button idTransBtn;
+    private EditText editPhoneEdt;
+    private Button phoneEditBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,22 @@ public class MyProfileSettingActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        phoneEditBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContextUtil.setUserPhoneNum(mContext, editPhoneEdt.getText().toString());
+                finish();
+            }
+        });
+
+        idTransBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContextUtil.setEditId(mContext, transIdEdt.getText().toString());
+                finish();
+            }
+        });
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +71,12 @@ public class MyProfileSettingActivity extends BaseActivity {
                 logout.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+//                       로그인한 사용자 정보를 삭제
+                        ContextUtil.logoutProcess();
+                        MainActivity.activity.finish();
+                        finish();
+                        Intent intent = new Intent(mContext, LoginActivity.class);
+                        startActivity(intent);
                     }
                 });
                 logout.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -84,6 +114,7 @@ public class MyProfileSettingActivity extends BaseActivity {
                 profileImg.show();
             }
         });
+
     }
 
     @Override
@@ -116,13 +147,20 @@ public class MyProfileSettingActivity extends BaseActivity {
 
     @Override
     public void setValues() {
+        userIdTxt.setText(ContextUtil.getEditId(mContext));
+        transIdEdt.setText(ContextUtil.getEditId(mContext));
 
     }
 
     @Override
     public void bindViews() {
         this.logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        this.phoneEditBtn = (Button) findViewById(R.id.phoneEditBtn);
+        this.editPhoneEdt = (EditText) findViewById(R.id.editPhoneEdt);
+        this.idTransBtn = (Button) findViewById(R.id.idTransBtn);
+        this.transIdEdt = (EditText) findViewById(R.id.transIdEdt);
         this.profileImageBtn = (Button) findViewById(R.id.profileImageBtn);
+        this.userIdTxt = (TextView) findViewById(R.id.userIdTxt);
         this.profileImage = (CircleImageView) findViewById(R.id.profileImage);
     }
 }

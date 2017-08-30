@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">다방카피</string>
+
+    <string name="facebook_app_id">260909841082517</string>
+    <string name="fb_login_protocol_scheme">fb260909841082517</string>
 </resources>
